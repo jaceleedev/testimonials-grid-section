@@ -8,7 +8,7 @@
   }
 
   .text-caption {
-    @apply font-barlowSemiCondensed text-[11px] not-italic font-medium leading-none opacity-50;
+    @apply font-barlowSemiCondensed text-[11px] not-italic font-medium leading-none text-opacity-50;
   }
 
   .text-headline {
@@ -16,7 +16,7 @@
   }
 
   .text-body {
-    @apply font-barlowSemiCondensed text-[13px] not-italic font-medium leading-[18px] opacity-70;
+    @apply font-barlowSemiCondensed text-[13px] not-italic font-medium leading-[18px] text-opacity-70;
   }
 
   .testimonial-shadow {
