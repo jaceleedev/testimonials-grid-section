@@ -1,20 +1,5 @@
 import Image from 'next/image';
-
-interface TestimonialProps {
-  imageUrl: string;
-  name: string;
-  status: string;
-  headline: string;
-  content: string;
-  textColor: string;
-  backgroundColor: string;
-  gridArea: string;
-  showQuote?: boolean;
-  reducedPadding?: boolean;
-  imageBorder?: string;
-  isFirstRow?: boolean;
-  isFirstCard?: boolean;
-}
+import { TestimonialProps } from '../types/testimonial';
 
 function Testimonial({
   imageUrl,

@@ -1,21 +1,7 @@
 import Testimonial from '@/components/Testimonial';
+import { TestimonialProps } from '@/components/types/testimonial';
 
-interface TestimonialData {
-  imageUrl: string;
-  name: string;
-  status: string;
-  headline: string;
-  content: string;
-  textColor: string;
-  backgroundColor: string;
-  gridArea: string;
-  showQuote?: boolean;
-  reducedPadding?: boolean;
-  imageBorder?: string;
-  isFirstCard?: boolean;
-}
-
-const testimonialData: TestimonialData[] = [
+const testimonialData: TestimonialProps[] = [
   {
     imageUrl: '/images/image-daniel.jpg',
     name: 'Daniel Clifford',
