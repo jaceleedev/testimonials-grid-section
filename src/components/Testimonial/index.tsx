@@ -13,6 +13,7 @@ interface TestimonialProps {
   reducedPadding?: boolean;
   imageBorder?: string;
   isFirstRow?: boolean;
+  isFirstCard?: boolean;
 }
 
 function Testimonial({
@@ -28,6 +29,7 @@ function Testimonial({
   reducedPadding = false,
   imageBorder = '',
   isFirstRow = false,
+  isFirstCard = false,
 }: TestimonialProps) {
   return (
     <article
@@ -41,7 +43,7 @@ function Testimonial({
           alt=""
           width={104}
           height={102}
-          className="absolute top-0 right-20 z-0"
+          className="absolute top-0 right-20 z-0 max-sm:right-6"
         />
       )}
 
@@ -59,7 +61,11 @@ function Testimonial({
           <p className={`text-caption ${textColor}`}>{status}</p>
         </div>
       </header>
-      <blockquote className={`grid ${isFirstRow ? 'gap-4' : 'gap-6'}`}>
+      <blockquote
+        className={`grid ${isFirstRow ? 'gap-4' : 'gap-6'} ${
+          isFirstCard ? 'max-sm:gap-10' : 'max-sm:gap-4'
+        }`}
+      >
         <p className={`text-headline ${textColor} z-10`}>{headline}</p>
         <p className={`text-body ${textColor}`}>{content}</p>
       </blockquote>
