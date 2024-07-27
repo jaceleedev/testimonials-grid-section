@@ -2,6 +2,28 @@ import Image from 'next/image';
 import { TestimonialProps } from '../types/testimonial';
 import { clsx } from 'clsx';
 
+function getArticleClasses(
+  gridArea: string,
+  reducedPadding: boolean,
+  backgroundColor: string
+) {
+  return clsx(
+    gridArea,
+    'relative p-8 pt-[26px]',
+    reducedPadding && 'pb-[26px] max-sm:pb-8',
+    backgroundColor,
+    'testimonial-shadow'
+  );
+}
+
+function getBlockquoteClasses(isFirstRow: boolean, isFirstCard: boolean) {
+  return clsx(
+    'grid',
+    isFirstRow ? 'gap-4' : 'gap-6',
+    isFirstCard ? 'max-sm:gap-10' : 'max-sm:gap-4'
+  );
+}
+
 function Testimonial(props: Readonly<TestimonialProps>) {
   const {
     imageUrl,
@@ -19,25 +41,18 @@ function Testimonial(props: Readonly<TestimonialProps>) {
     isFirstCard = false,
   } = props;
 
-  const articleClasses = clsx(
+  const articleClasses = getArticleClasses(
     gridArea,
-    'relative p-8 pt-[26px]',
-    reducedPadding && 'pb-[26px] max-sm:pb-8',
-    backgroundColor,
-    'testimonial-shadow'
+    reducedPadding,
+    backgroundColor
   );
-
-  const blockquoteClasses = clsx(
-    'grid',
-    isFirstRow ? 'gap-4' : 'gap-6',
-    isFirstCard ? 'max-sm:gap-10' : 'max-sm:gap-4'
-  );
+  const blockquoteClasses = getBlockquoteClasses(isFirstRow, isFirstCard);
 
   return (
     <article className={articleClasses}>
       {showQuote && (
         <Image
-          src={'/images/bg-pattern-quotation.svg'}
+          src="/images/bg-pattern-quotation.svg"
           alt=""
           width={104}
           height={102}
@@ -53,16 +68,18 @@ function Testimonial(props: Readonly<TestimonialProps>) {
           width={28}
           height={28}
           priority
-          className={`rounded-full ${imageBorder}`}
+          className={clsx('rounded-full', imageBorder)}
         />
         <div className="grid gap-1">
-          <p className={`text-name ${textColor}`}>{name}</p>
-          <p className={`text-caption ${textColor}`}>{status}</p>
+          <p className={clsx('text-name', textColor)}>{name}</p>
+          <p className={clsx('text-caption', textColor)}>{status}</p>
         </div>
       </header>
       <blockquote className={blockquoteClasses}>
-        <p className={`text-headline ${textColor} z-10`}>{headline}</p>
-        <p className={`text-body ${textColor} ${isFirstCard && 'max-sm:pr-4'}`}>
+        <p className={clsx('text-headline', textColor, 'z-10')}>{headline}</p>
+        <p
+          className={clsx('text-body', textColor, isFirstCard && 'max-sm:pr-4')}
+        >
           {content}
         </p>
       </blockquote>
