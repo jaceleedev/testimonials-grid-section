@@ -20,7 +20,7 @@ function Testimonial({
   const articleClasses = clsx(
     gridArea,
     'relative p-8 pt-[26px]',
-    reducedPadding && 'pb-[26px]',
+    reducedPadding && 'pb-[26px] max-sm:pb-8',
     backgroundColor,
     'testimonial-shadow'
   );
@@ -59,7 +59,9 @@ function Testimonial({
       </header>
       <blockquote className={blockquoteClasses}>
         <p className={`text-headline ${textColor} z-10`}>{headline}</p>
-        <p className={`text-body ${textColor}`}>{content}</p>
+        <p className={`text-body ${textColor} ${isFirstCard && 'max-sm:pr-4'}`}>
+          {content}
+        </p>
       </blockquote>
     </article>
   );
