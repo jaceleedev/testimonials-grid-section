@@ -70,13 +70,13 @@ function Testimonial(props: Readonly<TestimonialProps>) {
           priority
           className={clsx('rounded-full', imageBorder)}
         />
-        <div className="grid gap-1">
+        <h2 className="grid gap-1">
           <p className={clsx('text-name', textColor)}>{name}</p>
           <p className={clsx('text-caption', textColor)}>{status}</p>
-        </div>
+        </h2>
       </header>
       <blockquote className={blockquoteClasses}>
-        <p className={clsx('text-headline', textColor, 'z-10')}>{headline}</p>
+        <h3 className={clsx('text-headline', textColor, 'z-10')}>{headline}</h3>
         <p
           className={clsx('text-body', textColor, isFirstCard && 'max-sm:pr-4')}
         >

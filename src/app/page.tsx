@@ -72,6 +72,7 @@ export default function Home() {
   return (
     <main className="flex justify-center items-center w-screen min-h-screen bg-light-grayish-blue max-lg:py-[71px] max-lg:px-6">
       <section className="grid grid-cols-4 grid-rows-[auto] gap-x-[30px] gap-y-6 max-w-[1110px] max-lg:grid-cols-3 max-sm:grid-cols-1">
+        <h1 className="sr-only">Frontend Mentor Testimonials page</h1>
         {testimonialData.map((testimonial, index) => (
           <Testimonial
             key={testimonial.name}
