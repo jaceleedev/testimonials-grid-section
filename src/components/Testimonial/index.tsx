@@ -2,21 +2,23 @@ import Image from 'next/image';
 import { TestimonialProps } from '../types/testimonial';
 import { clsx } from 'clsx';
 
-function Testimonial({
-  imageUrl,
-  name,
-  status,
-  headline,
-  content,
-  textColor,
-  backgroundColor,
-  gridArea,
-  showQuote = false,
-  reducedPadding = false,
-  imageBorder = '',
-  isFirstRow = false,
-  isFirstCard = false,
-}: Readonly<TestimonialProps>) {
+function Testimonial(props: Readonly<TestimonialProps>) {
+  const {
+    imageUrl,
+    name,
+    status,
+    headline,
+    content,
+    textColor,
+    backgroundColor,
+    gridArea,
+    showQuote = false,
+    reducedPadding = false,
+    imageBorder = '',
+    isFirstRow = false,
+    isFirstCard = false,
+  } = props;
+
   const articleClasses = clsx(
     gridArea,
     'relative p-8 pt-[26px]',
@@ -39,6 +41,7 @@ function Testimonial({
           alt=""
           width={104}
           height={102}
+          priority
           className="absolute top-0 right-20 z-0 max-sm:right-6"
         />
       )}
