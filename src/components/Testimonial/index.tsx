@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { TestimonialProps } from '../types/testimonial';
+import { clsx } from 'clsx';
 
 function Testimonial({
   imageUrl,
@@ -15,13 +16,23 @@ function Testimonial({
   imageBorder = '',
   isFirstRow = false,
   isFirstCard = false,
-}: TestimonialProps) {
+}: Readonly<TestimonialProps>) {
+  const articleClasses = clsx(
+    gridArea,
+    'relative p-8 pt-[26px]',
+    reducedPadding && 'pb-[26px]',
+    backgroundColor,
+    'testimonial-shadow'
+  );
+
+  const blockquoteClasses = clsx(
+    'grid',
+    isFirstRow ? 'gap-4' : 'gap-6',
+    isFirstCard ? 'max-sm:gap-10' : 'max-sm:gap-4'
+  );
+
   return (
-    <article
-      className={`${gridArea} relative p-8 pt-[26px] ${
-        reducedPadding ? 'pb-[26px]' : ''
-      } ${backgroundColor} testimonial-shadow`}
-    >
+    <article className={articleClasses}>
       {showQuote && (
         <Image
           src={'/images/bg-pattern-quotation.svg'}
@@ -46,11 +57,7 @@ function Testimonial({
           <p className={`text-caption ${textColor}`}>{status}</p>
         </div>
       </header>
-      <blockquote
-        className={`grid ${isFirstRow ? 'gap-4' : 'gap-6'} ${
-          isFirstCard ? 'max-sm:gap-10' : 'max-sm:gap-4'
-        }`}
-      >
+      <blockquote className={blockquoteClasses}>
         <p className={`text-headline ${textColor} z-10`}>{headline}</p>
         <p className={`text-body ${textColor}`}>{content}</p>
       </blockquote>
